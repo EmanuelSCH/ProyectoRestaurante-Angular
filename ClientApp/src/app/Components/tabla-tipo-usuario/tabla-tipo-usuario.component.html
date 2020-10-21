@@ -1,0 +1,28 @@
+<table class="table">
+
+  <thead class="thead-dark">
+    <tr>
+
+      <th *ngFor="let cabecera of cabeceras">{{cabecera}}</th>
+      <th *ngIf="isMantenimiento==true">Operaciones</th>
+    </tr>
+
+  </thead>
+
+  <tbody>
+
+    <tr *ngFor="let tipoUsuario of tipoUsuarios">
+      <td>{{tipoUsuario.iidtipousuario}}</td>
+      <td>{{tipoUsuario.nombre}}</td>
+      <td>{{tipoUsuario.descripcion}}</td>
+      <td *ngIf="isMantenimiento==true">
+
+        <i [routerLink]="['/tipoUsuario-form-mantenimiento', tipoUsuario.iidtipousuario]" class="glyphicon glyphicon-edit btn btn-primary"></i>
+        <i class="glyphicon glyphicon-trash btn btn-danger" (click)="eliminar(tipoUsuario.iidtipousuario)"></i>
+
+      </td>
+    </tr>
+
+  </tbody>
+
+</table>

@@ -1,0 +1,78 @@
+<h1>{{titulo}}</h1>
+
+<div class="row">
+
+  <div class="col-md-12">
+
+
+    <form [formGroup]="pagina" (ngSubmit)="guardarDatos()">
+
+
+      <div class="form-group">
+
+        <label>Id Pagina</label>
+        <input type="text" class="form-control" formControlName="iidpagina" readonly />
+
+      </div>
+
+      <div class="form-group">
+
+        <input type="radio" formControlName="bvisible" name="bvisible" value=1/>
+        <label>Visible</label>
+
+        <input type="radio" formControlName="bvisible" name="bvisible" value=0/>
+        <label>No Visible</label>
+
+      </div>
+
+      <div class="form-group">
+
+        <label>Mensaje</label>
+        <input type="text" class="form-control" formControlName="mensaje" />
+
+        <div style="color:red" *ngIf="pagina.controls['mensaje'].errors?.required">
+          El nombre de la pagina debe ser obligatorio
+        </div>
+
+        <div style="color:red" *ngIf="pagina.controls['mensaje'].errors?.maxlength">
+          Supero la cantidad maxima
+        </div>
+
+      </div>
+
+      <div class="form-group">
+
+        <label>Accion</label>
+        <input type="text" class="form-control" formControlName="accion" />
+
+        <div style="color:red" *ngIf="pagina.controls['accion'].errors?.required">
+          El nombre de la accion debe ser obligatorio
+        </div>
+
+        <div style="color:red" *ngIf="pagina.controls['accion'].errors?.maxlength">
+          Supero la cantidad maxima
+        </div>
+
+      </div>
+
+
+
+      <div>
+        <input [disabled]="!pagina.valid" type="submit" value="Guardar" class="btn btn-primary" />
+        <button [routerLink]="['/mantenimiento-pagina']" class="btn btn-danger">Regresar</button>
+      </div>
+
+
+    </form>
+
+
+
+
+
+  </div>
+
+
+
+
+
+</div>
